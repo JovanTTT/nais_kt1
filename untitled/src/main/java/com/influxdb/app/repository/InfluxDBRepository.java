@@ -205,18 +205,20 @@ public class InfluxDBRepository {
     }
 
     /**
-     * Kompleksan upit 3: Maksimalne vrednosti po 1h intervalu za sve merije, grupisano po lokaciji
+     * Kompleksan upit 3: Po svakom satu grad sa najvišom temperaturom (poslednjih 7 dana).
      */
     public List<MeasurementPointDTO> getMaxValuesPerHour() {
         try {
             String query = String.format(
                 "from(bucket:\"%s\") " +
-                "|> range(start: 0) " +
+                "|> range(start: -7d) " +
                 "|> filter(fn: (r) => r._measurement == \"weather\" and r._field == \"temperature\") " +
-                "|> group(columns: [\"_measurement\", \"location\"]) " +
-                "|> aggregateWindow(every: 1h, fn: max, createEmpty: false) " +
+                "|> group(columns: [\"location\"]) " +
+                "|> aggregateWindow(every: 1h, fn: last, createEmpty: false) " +
+                "|> group(columns: [\"_time\"]) " +
+                "|> max(column: \"_value\") " +
                 "|> group() " +
-                "|> sort(columns: [\"_value\"], desc: true)",
+                "|> sort(columns: [\"_time\"], desc: true)",
                 bucket
             );
 

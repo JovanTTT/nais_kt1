@@ -138,10 +138,10 @@ public class MeasurementService {
     }
 
     /**
-     * Kompleksan upit 3: Maksimalne vrednosti po satu
+     * Kompleksan upit 3: Grad sa max temperaturom po satu (poslednjih 7 dana)
      */
     public QueryResultDTO getMaxValuesPerHour() {
-        logger.info("Izvršavanje kompleksnog upita 3: Maksimalne vrednosti po satu");
+        logger.info("Izvršavanje kompleksnog upita 3: Najtopliji grad po satu (-7d)");
 
         List<MeasurementPointDTO> results = influxDBRepository.getMaxValuesPerHour();
 

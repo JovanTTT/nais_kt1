@@ -159,7 +159,7 @@ public class MeasurementController {
     }
 
     /**
-     * Kompleksan upit 3: Maksimalne vrednosti po satu
+     * Kompleksan upit 3: Grad sa najvišom temperaturom u svakom satu (poslednjih 7 dana)
      * GET /api/measurements/queries/max-per-hour
      */
     @GetMapping("/queries/max-per-hour")
