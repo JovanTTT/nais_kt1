@@ -2,7 +2,6 @@ com\influxdb\app\Application.class
 com\influxdb\app\dto\MeasurementPointDTO$MeasurementPointDTOBuilder.class
 com\influxdb\app\dto\QueryResultDTO.class
 com\influxdb\app\dto\CreateMeasurementPointDTO$CreateMeasurementPointDTOBuilder.class
-com\influxdb\app\service\DataInitializationService.class
 com\influxdb\app\service\MeasurementService.class
 com\influxdb\app\dto\MeasurementPointDTO.class
 com\influxdb\app\repository\InfluxDBRepository.class

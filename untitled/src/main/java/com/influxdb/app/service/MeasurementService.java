@@ -131,6 +131,7 @@ public class MeasurementService {
 
         return QueryResultDTO.builder()
                 .query("getHighTemperatureMeasurements")
+                .threshold(threshold)
                 .results(results)
                 .count(results.size())
                 .build();

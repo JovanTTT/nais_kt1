@@ -182,7 +182,6 @@ public class InfluxDBRepository {
     /**
      * Kompleksan upit 2: Broj merenja sa visokom temperaturom po lokaciji
      * (filtriranje po pragu + grupisanje po lokaciji + agregacija count + sortiranje).
-     * Rezultujući count se mapira u polje temperature DTO-a.
      */
     public List<MeasurementPointDTO> getHighTemperatureMeasurements(double threshold) {
         try {
@@ -198,7 +197,7 @@ public class InfluxDBRepository {
                 bucket, threshold
             );
 
-            return executeQuery(query);
+            return executeLocationCountQuery(query);
         } catch (Exception e) {
             logger.error("Greška pri izvršavanju kompleksnog upita 2", e);
             throw new RuntimeException("Greška: " + e.getMessage(), e);
@@ -288,6 +287,42 @@ public class InfluxDBRepository {
             logger.error("Greška pri brojanju merenja", e);
             throw new RuntimeException("Greška pri brojanju: " + e.getMessage(), e);
         }
+    }
+
+    /**
+     * Mapira rezultate count() po lokaciji (kompleksan upit 2).
+     */
+    private List<MeasurementPointDTO> executeLocationCountQuery(String query) {
+        List<MeasurementPointDTO> results = new ArrayList<>();
+
+        try {
+            List<FluxTable> tables = influxDBClient.getQueryApi().query(query, org);
+
+            for (FluxTable table : tables) {
+                for (FluxRecord record : table.getRecords()) {
+                    MeasurementPointDTO dto = MeasurementPointDTO.builder()
+                            .measurement(record.getMeasurement() != null ? record.getMeasurement() : "weather")
+                            .build();
+
+                    if (record.getValue() instanceof Number number) {
+                        dto.setReadingsAboveThreshold(number.longValue());
+                    }
+
+                    record.getValues().forEach((key, val) -> {
+                        if ("location".equals(key) && val != null) {
+                            dto.setLocation(String.valueOf(val));
+                        }
+                    });
+
+                    results.add(dto);
+                }
+            }
+        } catch (Exception e) {
+            logger.error("Greška pri izvršavanju upita", e);
+            throw new RuntimeException("Greška pri izvršavanju upita: " + e.getMessage(), e);
+        }
+
+        return results;
     }
 
     /**
