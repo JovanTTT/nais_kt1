@@ -1,0 +1,14 @@
+com\influxdb\app\Application.class
+com\influxdb\app\dto\MeasurementPointDTO$MeasurementPointDTOBuilder.class
+com\influxdb\app\dto\QueryResultDTO.class
+com\influxdb\app\dto\CreateMeasurementPointDTO$CreateMeasurementPointDTOBuilder.class
+com\influxdb\app\service\DataInitializationService.class
+com\influxdb\app\service\MeasurementService.class
+com\influxdb\app\dto\MeasurementPointDTO.class
+com\influxdb\app\repository\InfluxDBRepository.class
+com\influxdb\app\config\InfluxDBConfig.class
+com\influxdb\app\config\RedisConfig.class
+com\influxdb\app\dto\QueryResultDTO$QueryResultDTOBuilder.class
+com\influxdb\app\dto\CreateMeasurementPointDTO.class
+com\influxdb\app\repository\RedisRepository.class
+com\influxdb\app\controller\MeasurementController.class

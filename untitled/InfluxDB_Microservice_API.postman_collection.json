@@ -1,0 +1,175 @@
+{
+  "info": {
+    "_postman_id": "influxdb-app-collection",
+    "name": "InfluxDB Microservice API",
+    "description": "Kolekcija zahteva za testiranje InfluxDB mikroservisa",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/measurements/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "measurements", "health"]
+        }
+      }
+    },
+    {
+      "name": "Create Measurement",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"measurement\": \"temperature_measurement\",\n  \"location\": \"Beograd\",\n  \"temperature\": 22.5,\n  \"humidity\": 55.0,\n  \"pressure\": 1013.25\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/measurements",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "measurements"]
+        }
+      }
+    },
+    {
+      "name": "Get By Location",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/measurements/location/Beograd",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "measurements", "location", "Beograd"]
+        }
+      }
+    },
+    {
+      "name": "Get By Measurement Type",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/measurements/type/temperature_measurement",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "measurements", "type", "temperature_measurement"]
+        }
+      }
+    },
+    {
+      "name": "Get By Time Range",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/measurements/time-range?from=2024-01-01T00:00:00Z&to=2024-12-31T23:59:59Z",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "measurements", "time-range"],
+          "query": [
+            {
+              "key": "from",
+              "value": "2024-01-01T00:00:00Z"
+            },
+            {
+              "key": "to",
+              "value": "2024-12-31T23:59:59Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Complex Query 1 - Average Temperature",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/measurements/queries/average-temperature",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "measurements", "queries", "average-temperature"]
+        }
+      }
+    },
+    {
+      "name": "Complex Query 2 - High Temperature",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/measurements/queries/high-temperature?threshold=25.0",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "measurements", "queries", "high-temperature"],
+          "query": [
+            {
+              "key": "threshold",
+              "value": "25.0"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Complex Query 3 - Max Per Hour",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/measurements/queries/max-per-hour",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "measurements", "queries", "max-per-hour"]
+        }
+      }
+    },
+    {
+      "name": "Get Total Count",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/measurements/count",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "measurements", "count"]
+        }
+      }
+    },
+    {
+      "name": "Delete Measurement",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/measurements/{id}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "measurements", "{id}"]
+        }
+      }
+    }
+  ]
+}

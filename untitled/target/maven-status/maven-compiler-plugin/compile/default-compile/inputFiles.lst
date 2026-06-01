@@ -1,0 +1,11 @@
+C:\Users\jovan\Desktop\proj_nais\untitled\src\main\java\com\influxdb\app\dto\CreateMeasurementPointDTO.java
+C:\Users\jovan\Desktop\proj_nais\untitled\src\main\java\com\influxdb\app\config\RedisConfig.java
+C:\Users\jovan\Desktop\proj_nais\untitled\src\main\java\com\influxdb\app\repository\RedisRepository.java
+C:\Users\jovan\Desktop\proj_nais\untitled\src\main\java\com\influxdb\app\dto\QueryResultDTO.java
+C:\Users\jovan\Desktop\proj_nais\untitled\src\main\java\com\influxdb\app\service\DataInitializationService.java
+C:\Users\jovan\Desktop\proj_nais\untitled\src\main\java\com\influxdb\app\repository\InfluxDBRepository.java
+C:\Users\jovan\Desktop\proj_nais\untitled\src\main\java\com\influxdb\app\controller\MeasurementController.java
+C:\Users\jovan\Desktop\proj_nais\untitled\src\main\java\com\influxdb\app\config\InfluxDBConfig.java
+C:\Users\jovan\Desktop\proj_nais\untitled\src\main\java\com\influxdb\app\Application.java
+C:\Users\jovan\Desktop\proj_nais\untitled\src\main\java\com\influxdb\app\service\MeasurementService.java
+C:\Users\jovan\Desktop\proj_nais\untitled\src\main\java\com\influxdb\app\dto\MeasurementPointDTO.java
